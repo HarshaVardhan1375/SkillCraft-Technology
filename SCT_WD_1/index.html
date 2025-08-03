@@ -3,34 +3,274 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Responsive Landing Page</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>ShopNest - Everything You Need</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    header#navbar {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background-color: #1f2937;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 40px;
+      z-index: 1000;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    header#navbar.scrolled {
+      background-color: darkorange;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #ffcc00;
+      transform: scale(1.05);
+    }
+
+    .menu-toggle {
+      display: none;
+      font-size: 28px;
+      cursor: pointer;
+      color: white;
+    }
+
+    .hero {
+      height: 100vh;
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 40px;
+    }
+
+    .content {
+      padding: 100px 40px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .content h2 {
+      font-size: 32px;
+      margin-bottom: 20px;
+      color: #e76f51;
+    }
+
+    .content ul {
+      list-style-type: disc;
+      padding-left: 20px;
+    }
+
+    .content li {
+      margin-bottom: 10px;
+    }
+
+    .content p {
+      margin-bottom: 20px;
+      font-size: 17px;
+    }
+
+    /* Products Grid */
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .product-card {
+      background-color: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      text-align: center;
+      transition: transform 0.3s ease;
+    }
+
+    .product-card:hover {
+      transform: scale(1.05);
+    }
+
+    .product-card img {
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .product-card h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .product-card p {
+      font-size: 15px;
+      color: #555;
+    }
+
+    .product-card button {
+      background-color: #e76f51;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      margin-top: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .product-card button:hover {
+      background-color: #d35400;
+    }
+
+    @media screen and (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        gap: 10px;
+        background-color: #1f2937;
+        position: absolute;
+        top: 60px;
+        right: 20px;
+        padding: 10px;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      header#navbar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .logo {
+        font-size: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
+
   <header id="navbar">
-    <div class="logo">Brand</div>
+    <div class="logo">ShopNest</div>
     <nav>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Features</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
     <div class="menu-toggle" id="menuToggle">&#9776;</div>
   </header>
 
   <main>
-    <section class="hero">
-      <h1>Welcome to Our Landing Page</h1>
-      <p>Scroll down to see the effects</p>
+    <section id="home" class="hero">
+      <h1>Welcome to ShopNest!</h1>
+      <p>Everything you need, delivered to your door.</p>
     </section>
-    <section class="content">
-      <h2>Example content</h2>
-      <p>Responsive Landing website</p>
+
+    <section id="products" class="content">
+      <h2>Our Products</h2>
+      <div class="products">
+        <div class="product-card">
+          <h3>Wireless Headphones</h3>
+          <p>High-quality sound and battery life.</p>
+          <button>Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <h3>Smart Watch</h3>
+          <p>Stay connected on the go.</p>
+          <button>Add to Cart</button>
+        </div>
+        <div class="product-card">
+          <h3>Fitness Band</h3>
+          <p>Track your health and workouts.</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="content">
+      <h2>Why Shop With Us</h2>
+      <ul>
+        <li>Fast and free delivery</li>
+        <li>100% secure payments</li>
+        <li>Easy returns & refunds</li>
+        <li>24/7 customer support</li>
+      </ul>
+    </section>
+
+    <section id="about" class="content">
+      <h2>About ShopNest</h2>
+      <p>ShopNest is your go-to online store for electronics, fashion, home essentials, and more.</p>
+      <p>We aim to provide a smooth and secure shopping experience with competitive prices and fast delivery.</p>
+    </section>
+
+    <section id="contact" class="content">
+      <h2>Contact Us</h2>
+      <p>Email: support@shopnest.com</p>
+      <p>Phone: +91-9876543210</p>
+      <p>Address: 456 Market Avenue, Bangalore, India</p>
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <script>
+    window.addEventListener('scroll', () => {
+      const navbar = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  </script>
 </body>
 </html>
